@@ -6,6 +6,9 @@
 
 # BlueJ files
 *.ctxt
+*.idea
+/target
+twitter-client.iml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

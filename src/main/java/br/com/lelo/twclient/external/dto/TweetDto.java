@@ -8,16 +8,18 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TweetDto {
 
-    private String created_at;
     private Long id;
     private String text;
     private UserTweetDto user;
 
-    public String getCreated_at() {
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "EEE MMM dd HH:mm:ss Z yyyy", locale = "EN")
+    private Date created_at;
+
+    public Date getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(String created_at) {
+    public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
 

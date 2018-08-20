@@ -2,16 +2,13 @@ package br.com.lelo.twclient.external.bridge;
 
 import br.com.lelo.twclient.config.TwitterEndpointProperties;
 import br.com.lelo.twclient.external.dto.TweetDto;
+import br.com.lelo.twclient.external.dto.TweetResultDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.http.client.fluent.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-
-import static org.apache.commons.lang3.StringUtils.replace;
 
 @Component
 public class TwitterBridge {
@@ -61,8 +58,8 @@ public class TwitterBridge {
                 "  ]\n" +
                 "}";
 
-
-        return Arrays.asList(mapper.readValue(asString, TweetDto[].class));
+        TweetResultDto tweetResult = mapper.readValue(asString, TweetResultDto.class);
+        return tweetResult.getStatuses();
     }
 
 }

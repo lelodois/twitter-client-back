@@ -31,7 +31,7 @@ public class Tweet {
     @JsonIgnore
     private Search search;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user_tw")
     private UserTweet userTweet;
 

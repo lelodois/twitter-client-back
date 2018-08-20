@@ -26,10 +26,6 @@ public class Search {
     @Column(name = "dt_execution")
     private Date executionDate;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_user")
-    private UserApp user;
-
     @OneToMany(mappedBy = "search", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Tweet> tweets = Lists.newArrayList();
 
@@ -37,10 +33,9 @@ public class Search {
 
     }
 
-    public Search(String hashtag, Long user) {
+    public Search(String hashtag) {
         this.hashtag = hashtag;
-        this.user = new UserApp(user);
-        this.setCreationDate(new Date());
+        this.creationDate = new Date();
     }
 
     public void addTweet(Tweet item) {
@@ -78,14 +73,6 @@ public class Search {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
-    }
-
-    public UserApp getUser() {
-        return user;
-    }
-
-    public void setUser(UserApp user) {
-        this.user = user;
     }
 
     public List<Tweet> getTweets() {

@@ -19,7 +19,7 @@ public class SearchController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Search search(@Valid @RequestBody String hashtag) {
-        return command.newSearch(1L, hashtag);
+        return command.newSearch(hashtag);
     }
 
 }

@@ -16,8 +16,8 @@ public class SearchCommandService {
     @Autowired
     private TweetCommandService tweetCommandService;
 
-    public Search newSearch(Long user, String hashtag) {
-        Search search = searchRepository.save(new Search(hashtag, user));
+    public Search newSearch(String hashtag) {
+        Search search = searchRepository.save(new Search(hashtag));
 
         tweetCommandService.searchByHash(search)
                 .parallelStream()

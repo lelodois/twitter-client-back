@@ -20,6 +20,10 @@ public class Tweet {
     private LocalDateTime creationDate;
 
     @NotNull
+    @Column(name = "dt_expiration_cache")
+    private LocalDateTime expirationCacheDate;
+
+    @NotNull
     @Column(name = "nr_hour_day")
     private Integer hourOfDay;
 
@@ -42,6 +46,14 @@ public class Tweet {
     public Tweet(@NotNull Long id, @NotNull String text) {
         this.id = id;
         this.text = text;
+    }
+
+    public LocalDateTime getExpirationCacheDate() {
+        return expirationCacheDate;
+    }
+
+    public void setExpirationCacheDate(LocalDateTime expirationCacheDate) {
+        this.expirationCacheDate = expirationCacheDate;
     }
 
     public TweetUser getTweetUser() {
@@ -74,9 +86,6 @@ public class Tweet {
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
-        if (creationDate != null) {
-            this.hourOfDay = creationDate.getHour();
-        }
     }
 
     public String getText() {

@@ -28,7 +28,7 @@ public class Search {
     private Date executionDate;
 
     @OneToMany(mappedBy = "search", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Tweet> tweets = Lists.newArrayList();
+    private List<Tweet> tweets;
 
     public Search() {
 
@@ -37,9 +37,13 @@ public class Search {
     public Search(String hashtag) {
         this.hashtag = hashtag;
         this.creationDate = new Date();
+        this.tweets = Lists.newArrayList();
     }
 
     public void addTweet(Tweet item) {
+        if (this.tweets == null) {
+            this.tweets = Lists.newArrayList();
+        }
         this.tweets.add(item);
         item.setSearch(this);
     }

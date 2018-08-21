@@ -37,7 +37,6 @@ public interface TweetRepository extends Repository<Tweet, Long> {
     )
     Stream<Top> countByHourOfDay(Pageable pageable);
 
-
     @Query(
             value = "SELECT " +
                     "   new br.com.lelo.twclient.domain.Top" +

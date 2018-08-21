@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class TwitterBridge {
+public class TweetBridge {
 
     @Autowired
     private ObjectMapper mapper;
 
     @Autowired
-    private TwitterBridgeRequest bridgeRequest;
+    private TweetBridgeRequest bridgeRequest;
 
     @Autowired
     private TwitterEndpointProperties properties;
@@ -26,15 +26,17 @@ public class TwitterBridge {
             String jsonResult =
                     bridgeRequest.get(hashTag, properties.getTwitterSearchByHashtag());
 
-            return mapper
+            List<TweetDto> tweets = mapper
                     .readValue(jsonResult, TweetResultDto.class)
                     .getStatuses();
+
+            return tweets;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void setBridgeRequest(TwitterBridgeRequest bridgeRequest) {
+    public void setBridgeRequest(TweetBridgeRequest bridgeRequest) {
         this.bridgeRequest = bridgeRequest;
     }
 }

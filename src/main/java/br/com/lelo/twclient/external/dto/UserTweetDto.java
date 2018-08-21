@@ -3,7 +3,7 @@ package br.com.lelo.twclient.external.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserTweetDto {
@@ -15,8 +15,8 @@ public class UserTweetDto {
     private Long friends_count;
     private String lang;
 
-    @JsonDeserialize(using = TweetDateDeserializer.class)
-    private Date created_at;
+    @JsonDeserialize(using = TweetLocalDateTimeDeserializer.class)
+    private LocalDateTime created_at;
 
     public Long getId() {
         return id;
@@ -58,11 +58,11 @@ public class UserTweetDto {
         this.friends_count = friends_count;
     }
 
-    public Date getCreated_at() {
+    public LocalDateTime getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
 

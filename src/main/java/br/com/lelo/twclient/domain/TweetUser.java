@@ -4,13 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class TweetUser {
 
     @Id
-    @Column(name = "id_tw_user")
+    @Column(name = "id")
+    @NotNull
     private Long id;
 
     @Column(name = "nr_followers")
@@ -23,11 +24,12 @@ public class TweetUser {
     private String language;
 
     @Column(name = "nm_name")
+    @NotNull
     private String name;
 
     @NotNull
     @Column(name = "dt_created")
-    private Date creationDate;
+    private LocalDateTime creationDate;
 
     public String getName() {
         return name;
@@ -37,11 +39,11 @@ public class TweetUser {
         this.name = name;
     }
 
-    public Date getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 

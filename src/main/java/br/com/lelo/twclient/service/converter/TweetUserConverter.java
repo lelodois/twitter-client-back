@@ -7,13 +7,14 @@ import org.springframework.stereotype.Component;
 import java.util.function.Function;
 
 @Component
-public class TweetUserConverterFunction implements Function<UserTweetDto, TweetUser> {
+public class TweetUserConverter implements Function<UserTweetDto, TweetUser> {
 
     @Override
     public TweetUser apply(UserTweetDto tweetDto) {
         TweetUser userTweet = new TweetUser();
-        userTweet.setFollowersCount(tweetDto.getFollowers_count());
         userTweet.setId(tweetDto.getId());
+        userTweet.setName(tweetDto.getName());
+        userTweet.setFollowersCount(tweetDto.getFollowers_count());
         userTweet.setCreationDate(tweetDto.getCreated_at());
         userTweet.setLanguage(tweetDto.getLang());
         userTweet.setLocation(tweetDto.getLocation());

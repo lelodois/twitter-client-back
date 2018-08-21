@@ -4,23 +4,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class Tweet {
 
+    @NotNull
     @Id
-    @GeneratedValue
-    @Column(name = "id_tweet")
+    @Column(name = "id")
     private Long id;
 
     @NotNull
-    @Column(name = "id_tweet_tw")
-    private Long idTweet;
+    @Column(name = "dt_created")
+    private LocalDateTime creationDate;
 
     @NotNull
-    @Column(name = "dt_created")
-    private Date creationDate;
+    @Column(name = "nr_hour_day")
+    private String hourOfDay;
 
     @NotNull
     @Column(name = "nm_text")
@@ -32,7 +32,7 @@ public class Tweet {
     private Search search;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_tw_user")
+    @JoinColumn(name = "id_user")
     private TweetUser tweetUser;
 
     public TweetUser getTweetUser() {
@@ -51,20 +51,23 @@ public class Tweet {
         this.id = id;
     }
 
-    public Long getIdTweet() {
-        return idTweet;
+    public String getHourOfDay() {
+        return hourOfDay;
     }
 
-    public void setIdTweet(Long idTweet) {
-        this.idTweet = idTweet;
+    public void setHourOfDay(String hourOfDay) {
+        this.hourOfDay = hourOfDay;
     }
 
-    public Date getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
+        if (creationDate != null) {
+            this.hourOfDay = String.valueOf(creationDate.getHour());
+        }
     }
 
     public String getText() {

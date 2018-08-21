@@ -1,12 +1,14 @@
 package br.com.lelo.twclient.service.top;
 
 import br.com.lelo.twclient.domain.Top;
+import br.com.lelo.twclient.domain.TopType;
 import br.com.lelo.twclient.repository.TopRepository;
 import br.com.lelo.twclient.repository.TweetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.stream.Stream;
 
 import static br.com.lelo.twclient.domain.TopType.*;
 
@@ -19,26 +21,17 @@ public class TopCommandService {
     @Autowired
     private TweetRepository tweetRepo;
 
-
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void saveAll() {
         topRepo.deleteAll();
 
-        /**
-        this.tweetRepo
-                .countByCountry(new PageRequest(0, 5))
-                .parallelStream()
-                .map(item -> topRepo.save(item.withType(COUNTRY)));
+        this.save(tweetRepo.countByHourOfDay(), HOURS);
+        this.save(tweetRepo.countByCountry(), COUNTRY);
+        this.save(tweetRepo.countByFollwers(), FOLLOWERS);
+    }
 
-        this.tweetRepo
-                .countByHourOfDay(new PageRequest(0, 5))
-                .parallelStream()
-                .map(item -> topRepo.save(item.withType(HOURS)));
-
-        this.tweetRepo.countByFollwers(new PageRequest(0, 5))
-                .parallelStream()
-                .map(item -> topRepo.save(new Top(FOLLOWERS, item.getName())));
-
-         **/
+    private void save(Stream<Top> tops, TopType topType) {
+        tops.map(item -> item.withType(topType))
+                .forEach(topRepo::save);
     }
 }

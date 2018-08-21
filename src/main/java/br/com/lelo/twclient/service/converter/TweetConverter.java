@@ -8,16 +8,16 @@ import org.springframework.stereotype.Component;
 import java.util.function.Function;
 
 @Component
-public class TweetConverterFuncion implements Function<TweetDto, Tweet> {
+public class TweetConverter implements Function<TweetDto, Tweet> {
 
     @Autowired
-    private TweetUserConverterFunction userConverter;
+    private TweetUserConverter userConverter;
 
     @Override
     public Tweet apply(TweetDto tweetDto) {
         Tweet tweet = new Tweet();
+        tweet.setId(tweetDto.getId());
         tweet.setCreationDate(tweetDto.getCreated_at());
-        tweet.setIdTweet(tweetDto.getId());
         tweet.setText(tweetDto.getText());
         tweet.setTweetUser(userConverter.apply(tweetDto.getUser()));
         return tweet;

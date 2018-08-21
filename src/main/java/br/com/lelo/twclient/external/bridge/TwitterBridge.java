@@ -58,8 +58,9 @@ public class TwitterBridge {
                 "  ]\n" +
                 "}";
 
-        TweetResultDto tweetResult = mapper.readValue(asString, TweetResultDto.class);
-        return tweetResult.getStatuses();
+        return mapper
+                .readValue(asString, TweetResultDto.class)
+                .getStatuses();
     }
 
 }

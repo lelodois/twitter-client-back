@@ -15,9 +15,10 @@ public class TopScheduler {
 
     Logger logger = LoggerFactory.getLogger(TopScheduler.class);
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 10000)
     public void go() {
-        logger.info("Running tops");
+        logger.info("Start tops");
         commandService.saveAll();
+        logger.info("Finish tops");
     }
 }

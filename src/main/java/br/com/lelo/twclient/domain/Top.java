@@ -21,14 +21,24 @@ public class Top {
     private String name;
 
     @Column(name = "nr_size")
-    private int size;
+    private Long size;
 
     public Top() {
     }
 
-    public Top(TopType type, String name) {
-        this.type = type;
+    /**
+     * Used by Jpa Constructor <p>
+     *
+     * @{@link br.com.lelo.twclient.repository.TweetRepository}
+     **/
+    public Top(Long size, String name) {
         this.name = name;
+        this.size = size;
+    }
+
+    public Top withType(TopType type) {
+        this.setType(type);
+        return this;
     }
 
     public Long getId() {
@@ -55,16 +65,11 @@ public class Top {
         this.name = name;
     }
 
-    public int getSize() {
+    public Long getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(Long size) {
         this.size = size;
-    }
-
-    public Top withType(TopType type) {
-        this.setType(type);
-        return this;
     }
 }

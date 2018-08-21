@@ -1,5 +1,4 @@
-# twitter-client-back
-## Serviço Rest client que consome api do twitter para buscar hashtags
+## Serviço Rest client que consome api do twitter para buscar hashtags (twitter-client-back)
 
 
 ### Tecnologias

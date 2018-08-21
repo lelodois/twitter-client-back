@@ -35,6 +35,14 @@ public class Tweet {
     @JoinColumn(name = "id_user")
     private TweetUser tweetUser;
 
+    public Tweet() {
+    }
+
+    public Tweet(@NotNull Long id, @NotNull String text) {
+        this.id = id;
+        this.text = text;
+    }
+
     public TweetUser getTweetUser() {
         return tweetUser;
     }

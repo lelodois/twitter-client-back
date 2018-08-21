@@ -2,11 +2,10 @@ package br.com.lelo.twclient.controller;
 
 import br.com.lelo.twclient.domain.Search;
 import br.com.lelo.twclient.service.search.SearchCommandService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -18,8 +17,12 @@ public class SearchController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Search search(@Valid @RequestBody String hashtag) {
-        return command.newSearch(hashtag);
+    public Search search(@RequestBody Search search) {
+        if (search == null || StringUtils.isEmpty(search.getHashtag())) {
+            throw new InvalidRequest();
+        }
+        
+        return command.newSearch(search.getHashtag());
     }
 
 }

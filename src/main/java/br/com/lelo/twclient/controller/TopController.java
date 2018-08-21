@@ -15,24 +15,24 @@ import java.util.List;
 public class TopController {
 
     @Autowired
-    private TopQueryService service;
+    private TopQueryService queryService;
 
     @GetMapping("hours")
     @ResponseStatus(HttpStatus.OK)
     public List<Top> findTopHours() {
-        return service.findByType(TopType.HOURS);
+        return queryService.findByType(TopType.HOURS);
     }
 
     @GetMapping("followers")
     @ResponseStatus(HttpStatus.OK)
     public List<Top> findTopFollowers() {
-        return service.findByType(TopType.FOLLOWERS);
+        return queryService.findByType(TopType.FOLLOWERS);
     }
 
     @GetMapping("country")
     @ResponseStatus(HttpStatus.OK)
     public List<Top> findTopCountry() {
-        return service.findByType(TopType.COUNTRY);
+        return queryService.findByType(TopType.COUNTRY);
     }
 
 }

@@ -11,7 +11,7 @@ import java.util.List;
 public class Search {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_search")
     private Long id;
 

@@ -19,8 +19,8 @@ public class SearchCommandService {
     public Search newSearch(String hashtag) {
         Search search = searchRepository.save(new Search(hashtag));
 
-        tweetCommandService.searchByHash(search)
-                .parallelStream()
+        tweetCommandService.saveSearchByHash(search)
+                .stream()
                 .forEach(search::addTweet);
 
         search.setExecutionDate(new Date());

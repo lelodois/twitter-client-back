@@ -16,10 +16,10 @@ public class TweetConverterFuncion implements Function<TweetDto, Tweet> {
     @Override
     public Tweet apply(TweetDto tweetDto) {
         Tweet tweet = new Tweet();
-        //tweet.setCreationDate(tweetDto.getCreated_at());
+        tweet.setCreationDate(tweetDto.getCreated_at());
         tweet.setIdTweet(tweetDto.getId());
         tweet.setText(tweetDto.getText());
-        tweet.setUserTweet(userConverter.apply(tweetDto.getUser()));
+        tweet.setTweetUser(userConverter.apply(tweetDto.getUser()));
         return tweet;
     }
 

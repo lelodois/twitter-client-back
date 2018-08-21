@@ -1,7 +1,7 @@
 package br.com.lelo.twclient.external.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.Date;
 
@@ -12,7 +12,7 @@ public class TweetDto {
     private String text;
     private UserTweetDto user;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "EEE MMM dd HH:mm:ss Z yyyy", locale = "EN")
+    @JsonDeserialize(using = TweetDateDeserializer.class)
     private Date created_at;
 
     public Date getCreated_at() {

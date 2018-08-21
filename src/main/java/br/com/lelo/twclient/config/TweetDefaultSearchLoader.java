@@ -2,11 +2,11 @@ package br.com.lelo.twclient.config;
 
 import br.com.lelo.twclient.service.search.SearchCommandService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-
-@Component
+@Service
 public class TweetDefaultSearchLoader {
 
     @Autowired
@@ -15,10 +15,9 @@ public class TweetDefaultSearchLoader {
     @Autowired
     private TwitterEndpointProperties twitterProperties;
 
-    @PostConstruct
+    @EventListener(ApplicationReadyEvent.class)
     public void go() {
         twitterProperties.getTwitterTweetDefault()
-                .parallelStream()
                 .forEach(command::newSearch);
     }
 

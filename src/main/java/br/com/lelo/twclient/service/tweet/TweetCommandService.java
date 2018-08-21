@@ -18,11 +18,11 @@ public class TweetCommandService {
     @Autowired
     private TweetConverterFuncion tweetConverter;
 
-    public List<Tweet> searchByHash(Search search) {
+    public List<Tweet> saveSearchByHash(Search search) {
         List<Tweet> tweets = Lists.newArrayList();
 
         twitterBridge.findByHash(search.getHashtag())
-                .stream()
+                .parallelStream()
                 .map(tweetConverter)
                 .forEach(tweets::add);
 

@@ -32,15 +32,15 @@ public class Tweet {
     private Search search;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_user_tw")
-    private UserTweet userTweet;
+    @JoinColumn(name = "id_tw_user")
+    private TweetUser tweetUser;
 
-    public UserTweet getUserTweet() {
-        return userTweet;
+    public TweetUser getTweetUser() {
+        return tweetUser;
     }
 
-    public void setUserTweet(UserTweet userTweet) {
-        this.userTweet = userTweet;
+    public void setTweetUser(TweetUser tweetUser) {
+        this.tweetUser = tweetUser;
     }
 
     public Long getId() {

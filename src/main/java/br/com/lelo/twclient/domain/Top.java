@@ -36,6 +36,16 @@ public class Top {
         this.size = size;
     }
 
+    /**
+     * Used by Jpa Constructor <p>
+     *
+     * @{@link br.com.lelo.twclient.repository.TweetRepository}
+     **/
+    public Top(Long size, Integer name) {
+        this.name = name.toString();
+        this.size = size;
+    }
+
     public Top withType(TopType type) {
         this.setType(type);
         return this;

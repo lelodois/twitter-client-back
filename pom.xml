@@ -122,6 +122,14 @@
                     <include>**/twitter-endpoint.properties</include>
                 </includes>
             </resource>
+            <resource>
+                <directory>${basedir}/src/test/java</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/application-test.properties</include>
+                    <include>**/json-twitter-mock.json</include>
+                </includes>
+            </resource>
         </resources>
         <plugins>
             <plugin>

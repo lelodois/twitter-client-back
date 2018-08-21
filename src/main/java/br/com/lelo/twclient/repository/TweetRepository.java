@@ -2,6 +2,7 @@ package br.com.lelo.twclient.repository;
 
 import br.com.lelo.twclient.domain.Top;
 import br.com.lelo.twclient.domain.Tweet;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 
@@ -21,7 +22,7 @@ public interface TweetRepository extends Repository<Tweet, Long> {
                     "group by t.tweetUser.language " +
                     "Order by 1 desc"
     )
-    Stream<Top> countByCountry();
+    Stream<Top> countByCountry(Pageable pageable);
 
     @Query(
             value = "SELECT " +
@@ -34,7 +35,7 @@ public interface TweetRepository extends Repository<Tweet, Long> {
                     "group by t.hourOfDay " +
                     "Order by 1 desc"
     )
-    Stream<Top> countByHourOfDay();
+    Stream<Top> countByHourOfDay(Pageable pageable);
 
 
     @Query(
@@ -48,6 +49,6 @@ public interface TweetRepository extends Repository<Tweet, Long> {
                     "group by t.tweetUser.name " +
                     "Order by 1 desc"
     )
-    Stream<Top> countByFollwers();
+    Stream<Top> countByFollwers(Pageable pageable);
 
 }

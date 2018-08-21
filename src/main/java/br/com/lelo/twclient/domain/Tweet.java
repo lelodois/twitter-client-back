@@ -20,7 +20,7 @@ public class Tweet {
 
     @NotNull
     @Column(name = "nr_hour_day")
-    private String hourOfDay;
+    private Integer hourOfDay;
 
     @NotNull
     @Column(name = "nm_text")
@@ -51,11 +51,11 @@ public class Tweet {
         this.id = id;
     }
 
-    public String getHourOfDay() {
+    public Integer getHourOfDay() {
         return hourOfDay;
     }
 
-    public void setHourOfDay(String hourOfDay) {
+    public void setHourOfDay(Integer hourOfDay) {
         this.hourOfDay = hourOfDay;
     }
 
@@ -66,7 +66,7 @@ public class Tweet {
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
         if (creationDate != null) {
-            this.hourOfDay = String.valueOf(creationDate.getHour());
+            this.hourOfDay = creationDate.getHour();
         }
     }
 

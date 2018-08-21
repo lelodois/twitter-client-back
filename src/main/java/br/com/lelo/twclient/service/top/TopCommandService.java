@@ -3,7 +3,7 @@ package br.com.lelo.twclient.service.top;
 import br.com.lelo.twclient.domain.Top;
 import br.com.lelo.twclient.domain.TopType;
 import br.com.lelo.twclient.repository.TopRepository;
-import br.com.lelo.twclient.repository.TweetRepository;
+import br.com.lelo.twclient.service.tweet.TweetQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,22 +16,22 @@ import static br.com.lelo.twclient.domain.TopType.*;
 public class TopCommandService {
 
     @Autowired
-    private TopRepository topRepo;
+    private TopRepository topRepository;
 
     @Autowired
-    private TweetRepository tweetRepo;
+    private TweetQueryService tweetQueryService;
 
     @Transactional
     public void saveAll() {
-        topRepo.deleteAll();
+        topRepository.deleteAll();
 
-        this.save(tweetRepo.countByHourOfDay(), HOURS);
-        this.save(tweetRepo.countByCountry(), COUNTRY);
-        this.save(tweetRepo.countByFollwers(), FOLLOWERS);
+        this.save(tweetQueryService.countByHourOfDay(), HOURS);
+        this.save(tweetQueryService.countByCountry(), COUNTRY);
+        this.save(tweetQueryService.countByFollwers(), FOLLOWERS);
     }
 
     private void save(Stream<Top> tops, TopType topType) {
         tops.map(item -> item.withType(topType))
-                .forEach(topRepo::save);
+                .forEach(topRepository::save);
     }
 }

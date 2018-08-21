@@ -1,5 +1,7 @@
 package br.com.lelo.twclient.domain;
 
+import com.google.common.base.Objects;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -81,5 +83,18 @@ public class Top {
 
     public void setSize(Long size) {
         this.size = size;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Top top = (Top) o;
+        return Objects.equal(id, top.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

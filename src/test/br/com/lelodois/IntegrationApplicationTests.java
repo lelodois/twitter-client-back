@@ -3,7 +3,6 @@ package br.com.lelodois;
 import br.com.lelo.twclient.MainApplication;
 import br.com.lelo.twclient.domain.Top;
 import br.com.lelo.twclient.service.tweet.TweetQueryService;
-import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
 @DataJpaTest
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,39 +26,30 @@ public class IntegrationApplicationTests {
 
     @Test
     public void assertEqualsCountCoutry() {
-        List<Top> collect = tweetQueryService.countByCountry()
-                .collect(Collectors.toList());
+        Stream<Top> stream = tweetQueryService.countByCountry();
 
-        Assert.assertThat(collect.size(), Matchers.is(1));
-        Top top = collect.iterator().next();
+        Top max = stream.max(Comparator.comparing(Top::getSize)).get();
+        Assert.assertEquals("en", max.getName());
+        Assert.assertEquals("4", max.getSize().toString());
 
-        Assert.assertEquals("en", top.getName());
-        Assert.assertEquals("1", top.getSize().toString());
     }
 
     @Test
     public void assertEqualsCountHourOfDay() {
-        List<Top> collect = tweetQueryService.countByHourOfDay()
-                .collect(Collectors.toList());
+        Stream<Top> stream = tweetQueryService.countByHourOfDay();
 
-        Assert.assertThat(collect.size(), Matchers.is(1));
-        Top top = collect.iterator().next();
-
-        Assert.assertEquals("18", top.getName());
-        Assert.assertEquals("1", top.getSize().toString());
-
+        Top max = stream.max(Comparator.comparing(Top::getSize)).get();
+        Assert.assertEquals("19", max.getName());
+        Assert.assertEquals("2", max.getSize().toString());
     }
 
     @Test
     public void assertEqualsFollowers() {
-        List<Top> collect = tweetQueryService.countByFollwers()
-                .collect(Collectors.toList());
+        Stream<Top> stream = tweetQueryService.countByFollwers();
 
-        Assert.assertThat(collect.size(), Matchers.is(1));
-        Top top = collect.iterator().next();
-
-        Assert.assertEquals("NASA", top.getName());
-        Assert.assertEquals("1", top.getSize().toString());
+        Top max = stream.max(Comparator.comparing(Top::getSize)).get();
+        Assert.assertEquals("NASA", max.getName());
+        Assert.assertEquals("3", max.getSize().toString());
     }
 
 }

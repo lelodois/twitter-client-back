@@ -1,5 +1,6 @@
 package br.com.lelo.twclient.domain;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 
 import javax.persistence.*;
@@ -83,4 +84,16 @@ public class Search {
         this.tweets = tweets;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Search search = (Search) o;
+        return Objects.equal(id, search.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }

@@ -1,6 +1,5 @@
 package br.com.lelo.twclient.service.tweet;
 
-import br.com.lelo.twclient.config.TwitterEndpointProperties;
 import br.com.lelo.twclient.domain.Search;
 import br.com.lelo.twclient.domain.Tweet;
 import br.com.lelo.twclient.external.bridge.TweetBridge;
@@ -19,7 +18,6 @@ public class TweetCommandService {
 
     @Autowired
     private TweetConverter tweetConverter;
-
 
     public List<Tweet> saveSearchByHash(Search search) {
         List<Tweet> tweets = Lists.newArrayList();

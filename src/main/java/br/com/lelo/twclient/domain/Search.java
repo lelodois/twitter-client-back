@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,10 @@ public class Search {
     @Column(name = "dt_execution")
     private Date executionDate;
 
-    @OneToMany(mappedBy = "search", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Column(name = "dt_expiration_cache")
+    private LocalDateTime expiration;
+
+    @OneToMany(mappedBy = "search", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Tweet> tweets;
 
     public Search() {
@@ -46,6 +50,14 @@ public class Search {
         }
         this.tweets.add(item);
         item.setSearch(this);
+    }
+
+    public LocalDateTime getExpiration() {
+        return expiration;
+    }
+
+    public void setExpiration(LocalDateTime expiration) {
+        this.expiration = expiration;
     }
 
     public Date getExecutionDate() {

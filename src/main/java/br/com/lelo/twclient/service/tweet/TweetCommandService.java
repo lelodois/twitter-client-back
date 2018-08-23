@@ -4,7 +4,7 @@ import br.com.lelo.twclient.domain.Search;
 import br.com.lelo.twclient.domain.Tweet;
 import br.com.lelo.twclient.external.bridge.TweetBridge;
 import br.com.lelo.twclient.service.converter.TweetConverter;
-import org.assertj.core.util.Lists;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

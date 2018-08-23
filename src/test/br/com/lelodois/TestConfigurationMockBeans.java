@@ -1,6 +1,6 @@
 package br.com.lelodois;
 
-import br.com.lelo.twclient.external.bridge.TwitterBridgeRequest;
+import br.com.lelo.twclient.external.bridge.TweetBridgeRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -12,10 +12,10 @@ import javax.servlet.ServletContext;
 
 @TestConfiguration
 public class TestConfigurationMockBeans {
-    
+
     @Bean
-    public TwitterBridgeRequest twitterBridgeRequest() {
-        return new TwitterBridgeRequestMock();
+    public TweetBridgeRequest tweetBridgeRequest() {
+        return new TweetBridgeRequestMock();
     }
 
     @Bean

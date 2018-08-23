@@ -3,7 +3,7 @@ package br.com.lelo.twclient.external.bridge;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TwitterBridgeRequest {
+public class TweetBridgeRequest {
 
 //    public String get(String hashTag, String url) throws Exception {
 //        return Request.Get(StringUtils.replace(url, "{hashtag}", hashTag))

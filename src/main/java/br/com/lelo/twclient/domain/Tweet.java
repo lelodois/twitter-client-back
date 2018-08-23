@@ -74,9 +74,6 @@ public class Tweet {
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
-        if (creationDate != null) {
-            this.hourOfDay = creationDate.getHour();
-        }
     }
 
     public String getText() {

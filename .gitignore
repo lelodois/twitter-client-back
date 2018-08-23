@@ -13,6 +13,8 @@ twitter-client.iml
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+twitter-client-back.iml
+
 # Package Files #
 *.jar
 *.war

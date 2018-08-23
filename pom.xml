@@ -3,10 +3,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.lelo</groupId>
-    <artifactId>twitter-client</artifactId>
+    <artifactId>twitter-client-back</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>twitter-client</name>
+    <name>twitter-client-back</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

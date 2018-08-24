@@ -97,7 +97,7 @@
                 <directory>src/main/java</directory>
             </resource>
             <resource>
-                <directory>src/test/java</directory>
+                <directory>src/test</directory>
             </resource>
             <resource>
                 <directory>${basedir}/src/main/resources</directory>

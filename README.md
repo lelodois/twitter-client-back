@@ -16,4 +16,4 @@
 Em desenvolvimento...
 
 Autor
-Leo costa - Initial work - GitUsersFriends
+Leo costa - Initial work 

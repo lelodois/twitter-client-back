@@ -4,7 +4,7 @@
 ### Build docker
 - mvn install
 - docker build -t twcli-back-docker .
-- docker run --net mynet123 --ip 172.18.0.24 -d -p 8094:8094 {tag}
+- docker run --net twclientnet --ip 172.18.0.24 -d -p 8094:8094 {tag}
 
 ### Tecnologias
 

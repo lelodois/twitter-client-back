@@ -3,7 +3,6 @@ package br.com.lelo.twclient.service.search;
 import br.com.lelo.twclient.domain.Search;
 import br.com.lelo.twclient.repository.SearchRepository;
 import br.com.lelo.twclient.service.tweet.TweetCommandService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +20,7 @@ public class SearchCommandService {
     private TweetCommandService tweetCommandService;
 
     public Search newSearch(String hashtag) {
-        hashtag = StringUtils.capitalize(hashtag);
+        hashtag = hashtag.toLowerCase();
 
         Optional<Search> searchByCache = this.getSearchByCache(hashtag);
 

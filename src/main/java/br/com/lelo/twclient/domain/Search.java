@@ -45,11 +45,13 @@ public class Search {
     }
 
     public void addTweet(Tweet item) {
-        if (this.tweets == null) {
-            this.tweets = Lists.newArrayList();
+        if(item != null){
+            if (this.tweets == null) {
+                this.tweets = Lists.newArrayList();
+            }
+            this.tweets.add(item);
+            item.setSearch(this);
         }
-        this.tweets.add(item);
-        item.setSearch(this);
     }
 
     public LocalDateTime getExpiration() {

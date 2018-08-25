@@ -1,13 +1,22 @@
 package br.com.lelo.twclient.config;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
+@Configuration
 @EnableResourceServer
-public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
+@Profile(value = "default")
+public class ResourceConfig extends ResourceServerConfigurerAdapter {
+
+    @Override
+    public void configure(ResourceServerSecurityConfigurer resources) {
+        resources.resourceId("twclientresource");
+    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -25,11 +34,13 @@ public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/**").access(oauthWrite)
                 .antMatchers(HttpMethod.PUT, "/**").access(oauthWrite)
                 .antMatchers(HttpMethod.PATCH, "/**").access(oauthWrite)
-                .antMatchers(HttpMethod.DELETE, "/**").access(oauthWrite);
+                .antMatchers(HttpMethod.DELETE, "/**").access(oauthWrite)
+                .and()
+                .authorizeRequests()
+                .antMatchers("/h2-console")
+                .permitAll()
+                .anyRequest()
+                .authenticated();
     }
 
-    @Override
-    public void configure(ResourceServerSecurityConfigurer resources) {
-        resources.resourceId("resources");
-    }
 }

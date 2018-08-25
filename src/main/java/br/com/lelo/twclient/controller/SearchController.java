@@ -17,7 +17,7 @@ public class SearchController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Search search(@RequestBody Search search) {
-        if (search == null || search.getHashtag() != null) {
+        if (search == null || search.getHashtag() == null) {
             throw new InvalidRequest();
         }
 

@@ -14,9 +14,36 @@ public class TwitterEndpointProperties {
 
     private String twitterPath;
     private String twitterToken;
-    private String twitterSearch;
     private String twitterSearchByHashtag;
+    private String twitterAuthConumerKey;
+    private String twitterAuthToken;
+    private String twitterAuthSignature;
+
     private List<String> twitterTweetDefault = Lists.newArrayList();
+
+    public String getTwitterAuthConumerKey() {
+        return twitterAuthConumerKey;
+    }
+
+    public void setTwitterAuthConumerKey(String twitterAuthConumerKey) {
+        this.twitterAuthConumerKey = twitterAuthConumerKey;
+    }
+
+    public String getTwitterAuthToken() {
+        return twitterAuthToken;
+    }
+
+    public void setTwitterAuthToken(String twitterAuthToken) {
+        this.twitterAuthToken = twitterAuthToken;
+    }
+
+    public String getTwitterAuthSignature() {
+        return twitterAuthSignature;
+    }
+
+    public void setTwitterAuthSignature(String twitterAuthSignature) {
+        this.twitterAuthSignature = twitterAuthSignature;
+    }
 
     public List<String> getTwitterTweetDefault() {
         return twitterTweetDefault;
@@ -24,14 +51,6 @@ public class TwitterEndpointProperties {
 
     public void setTwitterTweetDefault(List<String> twitterTweetDefault) {
         this.twitterTweetDefault = twitterTweetDefault;
-    }
-
-    public String getTwitterSearch() {
-        return twitterSearch;
-    }
-
-    public void setTwitterSearch(String twitterSearch) {
-        this.twitterSearch = twitterSearch;
     }
 
     public String getTwitterPath() {

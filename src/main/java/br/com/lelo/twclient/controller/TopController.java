@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/v1/api/top/")
 public class TopController {
 
@@ -19,17 +18,20 @@ public class TopController {
 
     @GetMapping("hours")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "*")
     public List<Top> findTopHours() {
         return queryService.findByType(TopType.HOURS);
     }
 
     @GetMapping("followers")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "*")
     public List<Top> findTopFollowers() {
         return queryService.findByType(TopType.FOLLOWERS);
     }
 
     @GetMapping("country")
+    @CrossOrigin(origins = "*")
     @ResponseStatus(HttpStatus.OK)
     public List<Top> findTopCountry() {
         return queryService.findByType(TopType.COUNTRY);

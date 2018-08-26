@@ -22,12 +22,16 @@ public class TweetLoader {
     @Autowired
     private TopCommandService commandService;
 
-    Logger logger = LoggerFactory.getLogger(TweetLoader.class);
+    private Logger logger = LoggerFactory.getLogger(TweetLoader.class);
 
     @EventListener(ApplicationReadyEvent.class)
     public void postConstruct() {
-        twitterProperties.getTwitterTweetDefault()
-                .forEach(command::newSearch);
+        try {
+            twitterProperties.getTwitterTweetDefault()
+                    .forEach(command::newSearch);
+        } catch (Exception e) {
+            logger.error("Error for search auto hash");
+        }
     }
 
     @Scheduled(fixedDelay = 10000)

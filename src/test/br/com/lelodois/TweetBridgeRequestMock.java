@@ -10,7 +10,7 @@ import java.nio.file.Files;
 public class TweetBridgeRequestMock extends TweetBridgeRequest {
 
     @Override
-    public String get(String hashTag, String url) {
+    public String get(String hashTag) {
         try {
             String jsonMock = "resources/json-twitter-mock.json";
             ClassLoader classLoader = ClassLoader.getSystemClassLoader();

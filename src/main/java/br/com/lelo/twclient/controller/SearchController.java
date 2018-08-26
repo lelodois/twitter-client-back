@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/v1/api/search/")
 public class SearchController {
 
@@ -16,6 +15,7 @@ public class SearchController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @CrossOrigin(origins = "*")
     public Search search(@RequestBody Search search) {
         if (search == null || search.getHashtag() == null) {
             throw new InvalidRequest();

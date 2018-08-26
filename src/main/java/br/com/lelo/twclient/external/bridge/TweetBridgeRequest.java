@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
 @Service
 public class TweetBridgeRequest {
 
@@ -18,6 +22,10 @@ public class TweetBridgeRequest {
     private TwitterEndpointProperties prop;
 
     public String get(String hashTag) {
+            return this.getOnTwitter(hashTag);
+    }
+
+    public String getOnTwitter(String hashTag) {
 
         String authoriz = "OAuth oauth_consumer_key=\"y9q5EkqWavT1HenKhr1AYzmbk\"" +
                 ",oauth_token=\"1032965391369293824-CZaKfzwtLy8QFj6KGlaZb0EnpEC5Al\"" +
@@ -45,6 +53,17 @@ public class TweetBridgeRequest {
     private String getTwSearchUrl(String hashTag) {
         return StringUtils.replace(
                 prop.getTwitterSearchByHashtag(), "{hashtag}", hashTag);
+    }
+
+    private String getMocked(String hashTag) {
+        try {
+            String jsonMock = "mock.json";
+            ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+            File file = new File(classLoader.getResource(jsonMock).getFile());
+            return new String(Files.readAllBytes(file.toPath()));
+        } catch (Exception e) {
+            throw new RuntimeException("mock.json not found");
+        }
     }
 
 

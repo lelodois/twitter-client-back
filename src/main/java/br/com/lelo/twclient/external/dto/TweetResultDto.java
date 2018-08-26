@@ -8,6 +8,15 @@ import java.util.List;
 public class TweetResultDto {
 
     private List<TweetDto> statuses;
+    private boolean mocked;
+
+    public boolean isMocked() {
+        return mocked;
+    }
+
+    public void setMocked(boolean mocked) {
+        this.mocked = mocked;
+    }
 
     public List<TweetDto> getStatuses() {
         return statuses;

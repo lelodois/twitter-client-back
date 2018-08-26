@@ -28,9 +28,20 @@ public class TweetUser {
     @NotNull
     private String name;
 
+    @Column(name = "nm_screen")
+    private String screnName;
+
     @NotNull
     @Column(name = "dt_created")
     private LocalDateTime creationDate;
+
+    public String getScrenName() {
+        return screnName;
+    }
+
+    public void setScrenName(String screnName) {
+        this.screnName = screnName;
+    }
 
     public String getName() {
         return name;

@@ -15,6 +15,9 @@ public class Tweet {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "id_str")
+    private String stringId;
+
     @NotNull
     @Column(name = "dt_created")
     private LocalDateTime creationDate;
@@ -42,6 +45,14 @@ public class Tweet {
     public Tweet(@NotNull Long id, @NotNull String text) {
         this.id = id;
         this.text = text;
+    }
+
+    public String getStringId() {
+        return stringId;
+    }
+
+    public void setStringId(String stringId) {
+        this.stringId = stringId;
     }
 
     public TweetUser getTweetUser() {

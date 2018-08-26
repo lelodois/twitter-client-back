@@ -34,6 +34,9 @@ public class Search {
     @OneToMany(mappedBy = "search", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Tweet> tweets;
 
+    @Column(name = "fg_twitter_info")
+    private boolean twitterInfo;
+
     public Search() {
 
     }
@@ -45,7 +48,7 @@ public class Search {
     }
 
     public void addTweet(Tweet item) {
-        if(item != null){
+        if (item != null) {
             if (this.tweets == null) {
                 this.tweets = Lists.newArrayList();
             }
@@ -60,6 +63,14 @@ public class Search {
 
     public void setExpiration(LocalDateTime expiration) {
         this.expiration = expiration;
+    }
+
+    public boolean isTwitterInfo() {
+        return twitterInfo;
+    }
+
+    public void setTwitterInfo(boolean twitterInfo) {
+        this.twitterInfo = twitterInfo;
     }
 
     public Date getExecutionDate() {

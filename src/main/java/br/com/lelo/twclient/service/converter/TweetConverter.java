@@ -17,6 +17,7 @@ public class TweetConverter implements Function<TweetDto, Tweet> {
     public Tweet apply(TweetDto tweetDto) {
         Tweet tweet = new Tweet();
         tweet.setId(tweetDto.getId());
+        tweet.setStringId(tweetDto.getId_str());
         tweet.setText(tweetDto.getText());
         tweet.setTweetUser(userConverter.apply(tweetDto.getUser()));
 

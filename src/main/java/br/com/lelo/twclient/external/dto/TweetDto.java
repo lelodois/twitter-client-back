@@ -9,11 +9,20 @@ import java.time.LocalDateTime;
 public class TweetDto {
 
     private Long id;
+    private String id_str;
     private String text;
     private UserTweetDto user;
 
     @JsonDeserialize(using = TweetLocalDateTimeDeserializer.class)
     private LocalDateTime created_at;
+
+    public String getId_str() {
+        return id_str;
+    }
+
+    public void setId_str(String id_str) {
+        this.id_str = id_str;
+    }
 
     public LocalDateTime getCreated_at() {
         return created_at;

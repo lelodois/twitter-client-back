@@ -29,7 +29,7 @@ public class TweetLoader {
         try {
             twitterProperties.getTwitterTweetDefault()
                     .forEach(command::newSearch);
-        } catch (Exception e) {
+        } catch (Throwable e) {
             logger.error("Error for search auto hash");
         }
     }

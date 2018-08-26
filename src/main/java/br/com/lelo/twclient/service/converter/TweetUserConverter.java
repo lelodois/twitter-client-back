@@ -14,6 +14,7 @@ public class TweetUserConverter implements Function<UserTweetDto, TweetUser> {
         TweetUser userTweet = new TweetUser();
         userTweet.setId(tweetDto.getId());
         userTweet.setName(tweetDto.getName());
+        userTweet.setScrenName(tweetDto.getScreen_name());
         userTweet.setFollowersCount(tweetDto.getFollowers_count());
         userTweet.setCreationDate(tweetDto.getCreated_at());
         userTweet.setLanguage(tweetDto.getLang());

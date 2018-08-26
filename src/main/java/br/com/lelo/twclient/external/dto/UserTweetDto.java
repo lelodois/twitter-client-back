@@ -10,6 +10,7 @@ public class UserTweetDto {
 
     private Long id;
     private String name;
+    private String screen_name;
     private String location;
     private Long followers_count;
     private Long friends_count;
@@ -17,6 +18,14 @@ public class UserTweetDto {
 
     @JsonDeserialize(using = TweetLocalDateTimeDeserializer.class)
     private LocalDateTime created_at;
+
+    public String getScreen_name() {
+        return screen_name;
+    }
+
+    public void setScreen_name(String screen_name) {
+        this.screen_name = screen_name;
+    }
 
     public Long getId() {
         return id;

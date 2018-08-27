@@ -12,68 +12,58 @@ import java.util.List;
 @ConfigurationProperties
 public class TwitterEndpointProperties {
 
-    private String twitterPath;
-    private String twitterToken;
-    private String twitterSearchByHashtag;
-    private String twitterAuthConumerKey;
-    private String twitterAuthToken;
-    private String twitterAuthSignature;
-
+    private String twHost;
+    private String twPath;
+    private String twFullUrl;
+    private String twKey;
+    private String twSecret;
     private List<String> twitterTweetDefault = Lists.newArrayList();
-
-    public String getTwitterAuthConumerKey() {
-        return twitterAuthConumerKey;
-    }
-
-    public void setTwitterAuthConumerKey(String twitterAuthConumerKey) {
-        this.twitterAuthConumerKey = twitterAuthConumerKey;
-    }
-
-    public String getTwitterAuthToken() {
-        return twitterAuthToken;
-    }
-
-    public void setTwitterAuthToken(String twitterAuthToken) {
-        this.twitterAuthToken = twitterAuthToken;
-    }
-
-    public String getTwitterAuthSignature() {
-        return twitterAuthSignature;
-    }
-
-    public void setTwitterAuthSignature(String twitterAuthSignature) {
-        this.twitterAuthSignature = twitterAuthSignature;
-    }
 
     public List<String> getTwitterTweetDefault() {
         return twitterTweetDefault;
     }
 
+    public String getTwHost() {
+        return twHost;
+    }
+
+    public void setTwHost(String twHost) {
+        this.twHost = twHost;
+    }
+
+    public String getTwPath() {
+        return twPath;
+    }
+
+    public void setTwPath(String twPath) {
+        this.twPath = twPath;
+    }
+
+    public String getTwFullUrl() {
+        return twFullUrl;
+    }
+
+    public void setTwFullUrl(String twFullUrl) {
+        this.twFullUrl = twFullUrl;
+    }
+
+    public String getTwKey() {
+        return twKey;
+    }
+
+    public void setTwKey(String twKey) {
+        this.twKey = twKey;
+    }
+
+    public String getTwSecret() {
+        return twSecret;
+    }
+
+    public void setTwSecret(String twSecret) {
+        this.twSecret = twSecret;
+    }
+
     public void setTwitterTweetDefault(List<String> twitterTweetDefault) {
         this.twitterTweetDefault = twitterTweetDefault;
-    }
-
-    public String getTwitterPath() {
-        return twitterPath;
-    }
-
-    public void setTwitterPath(String twitterPath) {
-        this.twitterPath = twitterPath;
-    }
-
-    public String getTwitterToken() {
-        return twitterToken;
-    }
-
-    public void setTwitterToken(String twitterToken) {
-        this.twitterToken = twitterToken;
-    }
-
-    public String getTwitterSearchByHashtag() {
-        return twitterSearchByHashtag;
-    }
-
-    public void setTwitterSearchByHashtag(String twitterSearchByHashtag) {
-        this.twitterSearchByHashtag = twitterSearchByHashtag;
     }
 }

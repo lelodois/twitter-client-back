@@ -24,7 +24,7 @@ public class TweetBridge {
 
         try {
             return mapper.readValue(jsonResult, TweetResultDto.class);
-        } catch (Exception e) {
+        } catch (Throwable e) {
             logger.error("Error for convert response: " + jsonResult, e);
             throw new TwitterResponseConvertException(e);
         }
